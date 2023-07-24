@@ -19,7 +19,8 @@ from django.conf.urls import include
 from first_app import views
 
 urlpatterns = [
-    re_path(r'^first_app/', include('first_app.urls')),
-    path("", views.index, name="index"),
+    #re_path(r'^first_app/', include('first_app.urls')),
+    #path("", views.index, name="index"),
+    path('', include('first_app.urls')),
     path("admin/", admin.site.urls),
 ]
