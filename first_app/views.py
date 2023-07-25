@@ -40,6 +40,12 @@ def users(request):
             print("ERROR FORM INVALID!")
             
     return render(request, 'first_app/users.html', {'form': form})
+
+def other(request):
+    return render(request,'first_app/other.html')
+
+def relative(request):
+    return render(request, 'first_app/relative_url_templates.html')
         
         
         
