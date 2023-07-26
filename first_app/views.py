@@ -8,7 +8,7 @@ from first_app.forms import NewUserForm
 
 def index(request):
     webpages_list = AccessRecord.objects.order_by('date')
-    date_dict = {'access_records': webpages_list}
+    date_dict = {'access_records': webpages_list, 'text':'Hello World', 'number':'100'}
     my_dic = {'insert_me':"Hello i am from first_app/index.html!"}
     return render(request, 'first_app/index.html', context=date_dict)
 
