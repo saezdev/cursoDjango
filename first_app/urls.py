@@ -7,6 +7,7 @@ urlpatterns = [
     re_path(r'^$',views.index,name='index'),
     path('forms/',views.form_name),
     path('users/',views.users),
+    path("registration/", views.register, name='registration'),
     re_path(r'^relative/$',views.relative,name='relative'),
     re_path(r'^others/$',views.other,name='other')
 ]
