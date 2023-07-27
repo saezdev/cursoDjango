@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from first_app.models import Topic, Webpage, AccessRecord
 from . import forms
 from first_app.forms import NewUserForm, UserProfileInfoForm, UserForm
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 
 #
 from django.contrib.auth import authenticate, login, logout
@@ -13,9 +13,19 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-class CBView(View):
-    def get(self,request):
-        return HttpResponse("CLASS BASED VIEWS ARE COOL!")
+class IndexView(TemplateView):
+    template_name = 'first_app/index.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["injectme"] = "BASIC INJECTION!"
+        return context
+
+#ANOTHER WAY OF DOING IT!
+""" class IndexView(TemplateView):
+    template_name = 'first_app/index.html'
+    extra_context = {'injectme': 'basic injection'} """
+    
 
 """ def index(request):
     webpages_list = AccessRecord.objects.order_by('date')
