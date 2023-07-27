@@ -4,7 +4,8 @@ from first_app import views
 app_name = 'first_app'
 
 urlpatterns = [
-    re_path(r'^$',views.index,name='index'),
+    #re_path(r'^$',views.index,name='index'),
+    path("", views.CBView.as_view(), name="index"),
     path('forms/',views.form_name),
     path('users/',views.users),
     path('login/', views.user_login, name='user_login'),

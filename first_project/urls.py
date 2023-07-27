@@ -22,6 +22,6 @@ urlpatterns = [
     #re_path(r'^first_app/', include('first_app.urls')),
     #path("", views.index, name="index"),
     path('', include('first_app.urls'), name='index'),
-    path('', views.index, name='index'),
+    path('', views.CBView.as_view(), name='index'),
     path("admin/", admin.site.urls),
 ]
