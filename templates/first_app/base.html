@@ -11,7 +11,16 @@
             <ul class="nav navbar-nav">
                 <li><a class="navbar-brand" href="{% url 'first_app:index' %}">DJANGO</a></li>
                 <li><a class="navbar-link" href="{% url 'admin:index' %}">ADMIN</a></li>
+
+                {% if user.is_authenticated == False %}
                 <li><a class="navbar-link" href="{% url 'first_app:registration' %}">REGISTER</a></li>
+                {% endif %}
+                
+                {% if user.is_authenticated %}
+                <li><a class="navbar-link" href="{% url 'first_app:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a class="navbar-link" href="{% url 'first_app:user_login' %}">Login</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
