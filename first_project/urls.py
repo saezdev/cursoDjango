@@ -23,5 +23,6 @@ urlpatterns = [
     #path("", views.index, name="index"),
     path('', include('first_app.urls'), name='index'),
     path('', views.IndexView.as_view(), name='index'),
+    path('list/', views.SchoolListView.as_view(), name='list'),
     path("admin/", admin.site.urls),
 ]

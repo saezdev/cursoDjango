@@ -6,6 +6,9 @@ app_name = 'first_app'
 urlpatterns = [
     #re_path(r'^$',views.index,name='index'),
     path("", views.IndexView.as_view(), name="index"),
+    path("list/", views.SchoolListView.as_view(),name='list'),
+    #re_path(r'^list/(?P<pk>\d+)/$', views.SchoolDetailView.as_view(), name='detail'),
+    path('list/<int:pk>/', views.SchoolDetailView.as_view(), name='detail'),
     path('forms/',views.form_name),
     path('users/',views.users),
     path('login/', views.user_login, name='user_login'),

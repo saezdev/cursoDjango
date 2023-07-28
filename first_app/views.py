@@ -3,13 +3,14 @@ from django.http import HttpResponse
 from first_app.models import Topic, Webpage, AccessRecord
 from . import forms
 from first_app.forms import NewUserForm, UserProfileInfoForm, UserForm
-from django.views.generic import View, TemplateView
+from django.views.generic import View, TemplateView, ListView, DetailView
 
 #
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from . import models
 
 # Create your views here.
 
@@ -135,6 +136,15 @@ def user_login(request):
     else:
         return render(request,'first_app/login.html')    
                 
+class SchoolListView(ListView):
+    context_object_name = 'schools'
+    
+    model = models.School
+    # if we dont use the context_object_name line the view will be named as -> school_list
 
-        
+class SchoolDetailView(DetailView):
+    context_object_name = 'school_detail'
+    model = models.School
+    template_name = 'first_app/school_detail.html'
+
            
