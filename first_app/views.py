@@ -3,12 +3,12 @@ from django.http import HttpResponse
 from first_app.models import Topic, Webpage, AccessRecord
 from . import forms
 from first_app.forms import NewUserForm, UserProfileInfoForm, UserForm
-from django.views.generic import View, TemplateView, ListView, DetailView
+from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 #
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.decorators import login_required
 from . import models
 
@@ -147,4 +147,16 @@ class SchoolDetailView(DetailView):
     model = models.School
     template_name = 'first_app/school_detail.html'
 
-           
+class SchoolCreateView(CreateView):
+    fields = ('name','principal','location')
+    model = models.School
+    
+class SchoolUpdateView(UpdateView):
+    fields = ('name','principal')
+    model = models.School
+    
+class SchoolDeleteView(DeleteView):
+    context_object_name = 'school_delete'
+    model = models.School
+    success_url = reverse_lazy('first_app:list')
+    
